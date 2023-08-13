@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:project_card_game/core/common/constants/app_routes.dart';
+import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
 import 'package:project_card_game/modules/game/home/presenter/game_page.dart';
 import 'package:project_card_game/modules/home/home/presenter/home_page.dart';
 
@@ -44,14 +45,10 @@ class AppModule extends Module {
         ),
       ];
 
-  // @override
-  // List<Bind<Object>> get binds => [
-  //       Bind.singleton<ConnectionService>((i) => ConnectionServiceImpl()),
-  //       Bind.singleton<RequestService>((i) => DioRequestService()),
-  //       Bind.singleton<GlobalData>((i) => GlobalData()),
-  //       ...UserLogic.binds,
-  //       ...NewObservarLogic.binds
-  //     ];
+  @override
+  List<Bind> get binds => [
+        Bind.singleton<GameCubit>((i) => GameCubit()),
+      ];
 }
 
 // class GlobalData {
