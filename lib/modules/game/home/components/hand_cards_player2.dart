@@ -8,14 +8,14 @@ import 'package:project_card_game/modules/game/home/components/center_dispute_ca
 import 'package:project_card_game/modules/game/home/components/hand_show_card_modal.dart';
 import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
 
-class HandCards extends StatefulWidget {
-  const HandCards({super.key});
+class HandCardsPlayer2 extends StatefulWidget {
+  const HandCardsPlayer2({super.key});
 
   @override
-  State<HandCards> createState() => _HandCardsState();
+  State<HandCardsPlayer2> createState() => _HandCardsPlayer2State();
 }
 
-class _HandCardsState extends State<HandCards> {
+class _HandCardsPlayer2State extends State<HandCardsPlayer2> {
   @override
   void initState() {
     super.initState();
@@ -33,13 +33,13 @@ class _HandCardsState extends State<HandCards> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                cubit.cardsPlayer1.isEmpty
+                cubit.cardsPlayer2.isEmpty
                     ? Container()
                     : GestureDetector(
                         onTap: () async {
                           await HandShowCardModal(
-                            player: 1,
-                            card: cubit.cardsPlayer1[0],
+                            player: 2,
+                            card: cubit.cardsPlayer2[0],
                           ).show(context);
                           cubit.resp == true
                               ? Timer(const Duration(seconds: 2), () {
@@ -52,24 +52,24 @@ class _HandCardsState extends State<HandCards> {
                         },
                         child: Container(
                           decoration: const BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.red,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
                             ),
                           ),
                           width: 100,
                           height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer1[0].name, style: const TextStyle(fontWeight: FontWeight.bold))),
+                          child: Center(child: Text(cubit.cardsPlayer2[0].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
                       ),
                 const Gap(10),
-                cubit.cardsPlayer1.length > 1
+                cubit.cardsPlayer2.length > 1
                     ? GestureDetector(
                         onTap: () async {
                           await HandShowCardModal(
-                            player: 1,
-                            card: cubit.cardsPlayer1[1],
+                            player: 2,
+                            card: cubit.cardsPlayer2[1],
                           ).show(context);
                           cubit.resp == true
                               ? Timer(const Duration(seconds: 2), () {
@@ -82,22 +82,25 @@ class _HandCardsState extends State<HandCards> {
                         },
                         child: Container(
                           decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                            color: Colors.red,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
                           ),
                           width: 100,
                           height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer1[1].name, style: const TextStyle(fontWeight: FontWeight.bold))),
+                          child: Center(child: Text(cubit.cardsPlayer2[1].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
                       )
                     : Container(),
                 const Gap(10),
-                cubit.cardsPlayer1.length > 2
+                cubit.cardsPlayer2.length > 2
                     ? GestureDetector(
                         onTap: () async {
                           await HandShowCardModal(
-                            player: 1,
-                            card: cubit.cardsPlayer1[2],
+                            player: 2,
+                            card: cubit.cardsPlayer2[2],
                           ).show(context);
                           cubit.resp == true
                               ? Timer(const Duration(seconds: 2), () {
@@ -110,22 +113,25 @@ class _HandCardsState extends State<HandCards> {
                         },
                         child: Container(
                           decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                            color: Colors.red,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
                           ),
                           width: 100,
                           height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer1[2].name, style: const TextStyle(fontWeight: FontWeight.bold))),
+                          child: Center(child: Text(cubit.cardsPlayer2[2].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
                       )
                     : Container(),
                 const Gap(10),
-                cubit.cardsPlayer1.length > 3
+                cubit.cardsPlayer2.length > 3
                     ? GestureDetector(
                         onTap: () async {
                           await HandShowCardModal(
-                            player: 1,
-                            card: cubit.cardsPlayer1[3],
+                            player: 2,
+                            card: cubit.cardsPlayer2[3],
                           ).show(context);
                           cubit.resp == true
                               ? Timer(const Duration(seconds: 2), () {
@@ -138,12 +144,15 @@ class _HandCardsState extends State<HandCards> {
                         },
                         child: Container(
                           decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                            color: Colors.red,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
                           ),
                           width: 100,
                           height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer1[3].name, style: const TextStyle(fontWeight: FontWeight.bold))),
+                          child: Center(child: Text(cubit.cardsPlayer2[3].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
                       )
                     : Container(),

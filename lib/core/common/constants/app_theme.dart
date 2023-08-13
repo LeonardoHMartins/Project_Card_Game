@@ -43,7 +43,7 @@ class AppTheme {
           ),
           contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.grey,
               width: 0,
             ),
@@ -70,7 +70,7 @@ class AppTheme {
             color: Colors.red,
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1,
               color: Colors.red,
             ),
@@ -78,7 +78,7 @@ class AppTheme {
           ),
 
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 2, color: Colors.red),
+            borderSide: const BorderSide(width: 2, color: Colors.red),
             borderRadius: BorderRadius.circular(15.0),
           ),
         ),

@@ -12,9 +12,9 @@ Future<T?> showCustomDialog<T>(
       maxHeight: context.heightPx * 0.95,
       minHeight: context.heightPx * 0.4,
     ),
-    isDismissible: true,
+    isDismissible: false,
     isScrollControlled: true,
-    enableDrag: true,
+    enableDrag: false,
     elevation: 0,
     builder: (context) => child,
   );

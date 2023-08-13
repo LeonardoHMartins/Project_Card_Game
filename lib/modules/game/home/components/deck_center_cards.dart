@@ -31,7 +31,7 @@ class _DeckCenterCardsState extends State<DeckCenterCards> {
                               cubit.deckCenterLeft.isNotEmpty
                                   ? Container(
                                       decoration: const BoxDecoration(
-                                        color: Colors.blue,
+                                        color: Colors.red,
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(20),
                                         ),
@@ -45,7 +45,7 @@ class _DeckCenterCardsState extends State<DeckCenterCards> {
                               cubit.deckCenterRight.isNotEmpty
                                   ? Container(
                                       decoration: const BoxDecoration(
-                                        color: Colors.red,
+                                        color: Colors.blue,
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(20),
                                         ),

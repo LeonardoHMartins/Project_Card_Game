@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:project_card_game/modules/game/home/components/center_dispute_votation.dart';
 import 'package:project_card_game/modules/game/home/components/deck_center_cards.dart';
 import 'package:project_card_game/modules/game/home/components/hand_cards.dart';
+import 'package:project_card_game/modules/game/home/components/hand_cards_player2.dart';
+import 'package:project_card_game/modules/game/home/components/hand_cards_player3.dart';
+import 'package:project_card_game/modules/game/home/components/hand_cards_player4.dart';
 import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
 
 class GamePage extends StatefulWidget {
@@ -26,57 +30,44 @@ class _GamePageState extends State<GamePage> {
                 padding: const EdgeInsets.all(0),
                 child: Stack(
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
-                                    ),
-                                  ),
-                                  width: 100,
-                                  height: 200,
-                                ),
-                                const Gap(10),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-                                  ),
-                                  width: 100,
-                                  height: 200,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const HandCards(),
-                      ],
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: HandCardsPlayer3(),
+                    ),
+                    const Align(
+                      alignment: Alignment.centerRight,
+                      child: HandCardsPlayer4(),
+                    ),
+                    const Align(
+                      alignment: Alignment.topCenter,
+                      child: HandCardsPlayer2(),
+                    ),
+                    const Align(
+                      alignment: Alignment.bottomCenter,
+                      child: HandCards(),
                     ),
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
-                        width: 275,
-                        height: 200,
-                        decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const CenterDisputeVotation(),
+                          const Gap(20),
+                          Container(
+                            width: 275,
+                            height: 200,
+                            decoration: const BoxDecoration(
+                              color: Colors.blueGrey,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(10),
+                              child: DeckCenterCards(),
+                            ),
                           ),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: DeckCenterCards(),
-                        ),
+                        ],
                       ),
                     ),
                   ],
