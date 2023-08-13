@@ -1,0 +1,4 @@
+enum GoalTypes {
+  monthly,
+  fortnightly,
+}
