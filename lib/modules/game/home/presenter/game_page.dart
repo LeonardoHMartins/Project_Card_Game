@@ -4,8 +4,8 @@ import 'package:gap/gap.dart';
 import 'package:project_card_game/modules/game/home/components/center_dispute_votation.dart';
 import 'package:project_card_game/modules/game/home/components/deck_center_cards.dart';
 import 'package:project_card_game/modules/game/home/components/hand_cards.dart';
-import 'package:project_card_game/modules/game/home/components/hand_cards_player2.dart';
 import 'package:project_card_game/modules/game/home/components/hand_cards_player3.dart';
+import 'package:project_card_game/modules/game/home/components/hand_cards_player2.dart';
 import 'package:project_card_game/modules/game/home/components/hand_cards_player4.dart';
 import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
 
@@ -30,21 +30,31 @@ class _GamePageState extends State<GamePage> {
                 padding: const EdgeInsets.all(0),
                 child: Stack(
                   children: [
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: HandCardsPlayer3(),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: HandCardsPlayer2(),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: HandCardsPlayer4(),
+                        ),
+                      ],
                     ),
-                    const Align(
-                      alignment: Alignment.centerRight,
-                      child: HandCardsPlayer4(),
-                    ),
-                    const Align(
-                      alignment: Alignment.topCenter,
-                      child: HandCardsPlayer2(),
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomCenter,
-                      child: HandCards(),
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: HandCardsPlayer3(),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: HandCards(),
+                        ),
+                      ],
                     ),
                     Align(
                       alignment: Alignment.center,

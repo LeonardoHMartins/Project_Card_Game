@@ -38,18 +38,20 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                     ? Container()
                     : GestureDetector(
                         onTap: () async {
-                          await HandShowCardModal(
-                            player: 4,
-                            card: cubit.cardsPlayer4[0],
-                          ).show(context);
-                          cubit.resp == true
-                              ? Timer(const Duration(seconds: 2), () {
-                                  CenterDisputeCardsModal(
-                                    card: cubit.deckCenter[0],
-                                  ).show(context);
-                                  cubit.resp = null;
-                                })
-                              : null;
+                          if (cubit.player == 4) {
+                            await HandShowCardModal(
+                              player: 4,
+                              card: cubit.cardsPlayer4[0],
+                            ).show(context);
+                            cubit.resp == true
+                                ? Timer(const Duration(seconds: 2), () {
+                                    CenterDisputeCardsModal(
+                                      card: cubit.deckCenter[0],
+                                    ).show(context);
+                                    cubit.resp = null;
+                                  })
+                                : null;
+                          }
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -68,18 +70,20 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                 cubit.cardsPlayer4.length > 1
                     ? GestureDetector(
                         onTap: () async {
-                          await HandShowCardModal(
-                            player: 4,
-                            card: cubit.cardsPlayer4[1],
-                          ).show(context);
-                          cubit.resp == true
-                              ? Timer(const Duration(seconds: 2), () {
-                                  CenterDisputeCardsModal(
-                                    card: cubit.deckCenter[0],
-                                  ).show(context);
-                                  cubit.resp = null;
-                                })
-                              : null;
+                          if (cubit.player == 4) {
+                            await HandShowCardModal(
+                              player: 4,
+                              card: cubit.cardsPlayer4[1],
+                            ).show(context);
+                            cubit.resp == true
+                                ? Timer(const Duration(seconds: 2), () {
+                                    CenterDisputeCardsModal(
+                                      card: cubit.deckCenter[0],
+                                    ).show(context);
+                                    cubit.resp = null;
+                                  })
+                                : null;
+                          }
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -99,18 +103,20 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                 cubit.cardsPlayer4.length > 2
                     ? GestureDetector(
                         onTap: () async {
-                          await HandShowCardModal(
-                            player: 4,
-                            card: cubit.cardsPlayer4[2],
-                          ).show(context);
-                          cubit.resp == true
-                              ? Timer(const Duration(seconds: 2), () {
-                                  CenterDisputeCardsModal(
-                                    card: cubit.deckCenter[0],
-                                  ).show(context);
-                                  cubit.resp = null;
-                                })
-                              : null;
+                          if (cubit.player == 4) {
+                            await HandShowCardModal(
+                              player: 4,
+                              card: cubit.cardsPlayer4[2],
+                            ).show(context);
+                            cubit.resp == true
+                                ? Timer(const Duration(seconds: 2), () {
+                                    CenterDisputeCardsModal(
+                                      card: cubit.deckCenter[0],
+                                    ).show(context);
+                                    cubit.resp = null;
+                                  })
+                                : null;
+                          }
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -130,18 +136,20 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                 cubit.cardsPlayer4.length > 3
                     ? GestureDetector(
                         onTap: () async {
-                          await HandShowCardModal(
-                            player: 4,
-                            card: cubit.cardsPlayer4[3],
-                          ).show(context);
-                          cubit.resp == true
-                              ? Timer(const Duration(seconds: 2), () {
-                                  CenterDisputeCardsModal(
-                                    card: cubit.deckCenter[0],
-                                  ).show(context);
-                                  cubit.resp = null;
-                                })
-                              : null;
+                          if (cubit.player == 4) {
+                            await HandShowCardModal(
+                              player: 4,
+                              card: cubit.cardsPlayer4[3],
+                            ).show(context);
+                            cubit.resp == true
+                                ? Timer(const Duration(seconds: 2), () {
+                                    CenterDisputeCardsModal(
+                                      card: cubit.deckCenter[0],
+                                    ).show(context);
+                                    cubit.resp = null;
+                                  })
+                                : null;
+                          }
                         },
                         child: Container(
                           decoration: const BoxDecoration(

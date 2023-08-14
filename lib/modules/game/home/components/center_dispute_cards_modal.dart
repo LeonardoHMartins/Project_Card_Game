@@ -21,6 +21,29 @@ class CenterDisputeCardsModal extends StatefulWidget {
 
 class CenterDisputeCardsModalState extends State<CenterDisputeCardsModal> {
   GameCubit cubit = Modular.get<GameCubit>();
+  Color? colorCard;
+
+  @override
+  void initState() {
+    super.initState();
+    if (cubit.player == 2) {
+      colorCard = Colors.blue;
+      return;
+    }
+    if (cubit.player == 3) {
+      colorCard = Colors.green;
+      return;
+    }
+    if (cubit.player == 4) {
+      colorCard = Colors.red;
+      return;
+    }
+    if (cubit.player == 1) {
+      colorCard = Colors.pink;
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -30,9 +53,9 @@ class CenterDisputeCardsModalState extends State<CenterDisputeCardsModal> {
           Container(
             width: 200,
             height: 400,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
+            decoration: BoxDecoration(
+              color: colorCard,
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
             ),

@@ -15,30 +15,35 @@ class GameCubit extends Cubit<GameState> {
     CardModel(id: 3, name: 'frog'),
     CardModel(id: 4, name: 'horse'),
   ];
-  List<CardModel> cardsPlayer2 = [
-    CardModel(id: 1, name: 'dog'),
-    CardModel(id: 2, name: 'crocodile'),
-    CardModel(id: 3, name: 'cat'),
-    CardModel(id: 4, name: 'duck'),
-  ];
   List<CardModel> cardsPlayer3 = [
-    CardModel(id: 1, name: 'laranja'),
-    CardModel(id: 2, name: 'limao'),
-    CardModel(id: 3, name: 'maça'),
-    CardModel(id: 4, name: 'abacaxi'),
+    CardModel(id: 5, name: 'dog'),
+    CardModel(id: 6, name: 'crocodile'),
+    CardModel(id: 7, name: 'cat'),
+    CardModel(id: 8, name: 'duck'),
+  ];
+  List<CardModel> cardsPlayer2 = [
+    CardModel(id: 9, name: 'laranja'),
+    CardModel(id: 10, name: 'limao'),
+    CardModel(id: 11, name: 'maça'),
+    CardModel(id: 12, name: 'abacaxi'),
   ];
   List<CardModel> cardsPlayer4 = [
-    CardModel(id: 1, name: 'et'),
-    CardModel(id: 2, name: 'humano'),
-    CardModel(id: 3, name: 'deus'),
-    CardModel(id: 4, name: 'jujutsu'),
+    CardModel(id: 13, name: 'et'),
+    CardModel(id: 14, name: 'humano'),
+    CardModel(id: 15, name: 'deus'),
+    CardModel(id: 16, name: 'jujutsu'),
   ];
 
-  List<CardModel> cardsPlayerAtual = [];
+  //Player atual jogando
+  int? player = 1;
+
+  //Cores das cartas no centro da mesa
+  Color? colorCardRight;
+  Color? colorCardLeft;
 
   //Cartas jogadas do lado esquerdo
   List<CardModel> deckCenterLeft = [
-    CardModel(id: 4, name: 'elefant'),
+    CardModel(id: 66, name: 'elefant'),
   ];
 
   //Cartas jogadas do lado direito
@@ -61,22 +66,56 @@ class GameCubit extends Cubit<GameState> {
 
   //--------------------------------Controlador do game----------------------------
 
-  //joga a carta no meio da mesa.
-  void jogarCard(int index, int player) {
+  //Mudar o jogador do turno
+  void changePlayer() {
     if (player == 1) {
-      cardsPlayer1.removeAt(cardsPlayer1.indexWhere((element) => element.id == index));
+      player = 2;
       return;
     }
     if (player == 2) {
-      cardsPlayer2.removeAt(cardsPlayer2.indexWhere((element) => element.id == index));
+      player = 3;
       return;
     }
     if (player == 3) {
-      cardsPlayer3.removeAt(cardsPlayer3.indexWhere((element) => element.id == index));
+      player = 4;
       return;
     }
     if (player == 4) {
+      player = 1;
+      return;
+    }
+  }
+
+  //joga a carta no meio da mesa.
+  void jogarCard(int index, int jogador) {
+    player = jogador;
+    if (jogador == 1) {
+      if (direction == 0) colorCardLeft = Colors.blue;
+      if (direction == 1) colorCardRight = Colors.blue;
+
+      cardsPlayer1.removeAt(cardsPlayer1.indexWhere((element) => element.id == index));
+      changePlayer();
+      return;
+    }
+    if (jogador == 2) {
+      if (direction == 0) colorCardLeft = Colors.green;
+      if (direction == 1) colorCardRight = Colors.green;
+      cardsPlayer2.removeAt(cardsPlayer2.indexWhere((element) => element.id == index));
+      changePlayer();
+      return;
+    }
+    if (jogador == 3) {
+      if (direction == 0) colorCardLeft = Colors.red;
+      if (direction == 1) colorCardRight = Colors.red;
+      cardsPlayer3.removeAt(cardsPlayer3.indexWhere((element) => element.id == index));
+      changePlayer();
+      return;
+    }
+    if (jogador == 4) {
+      if (direction == 0) colorCardLeft = Colors.pink;
+      if (direction == 1) colorCardRight = Colors.pink;
       cardsPlayer4.removeAt(cardsPlayer4.indexWhere((element) => element.id == index));
+      changePlayer();
       return;
     }
     emit(GameLoading());
@@ -92,6 +131,7 @@ class GameCubit extends Cubit<GameState> {
       deckCenter.removeWhere((element) => element.id != card.id);
       deckCenterLeft.removeWhere((element) => element.id != card.id);
       direction = 0;
+
       emit(GameLoading());
       emit(GameInitial());
       return;
@@ -104,6 +144,7 @@ class GameCubit extends Cubit<GameState> {
       direction = 1;
       emit(GameLoading());
       emit(GameInitial());
+
       return;
     }
   }

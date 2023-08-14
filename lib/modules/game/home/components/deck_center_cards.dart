@@ -13,6 +13,7 @@ class DeckCenterCards extends StatefulWidget {
 
 class _DeckCenterCardsState extends State<DeckCenterCards> {
   GameCubit cubit = Modular.get<GameCubit>();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameState>(
@@ -30,9 +31,9 @@ class _DeckCenterCardsState extends State<DeckCenterCards> {
                             children: [
                               cubit.deckCenterLeft.isNotEmpty
                                   ? Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.red,
-                                        borderRadius: BorderRadius.all(
+                                      decoration: BoxDecoration(
+                                        color: cubit.colorCardLeft,
+                                        borderRadius: const BorderRadius.all(
                                           Radius.circular(20),
                                         ),
                                       ),
@@ -44,9 +45,9 @@ class _DeckCenterCardsState extends State<DeckCenterCards> {
                               const Gap(30),
                               cubit.deckCenterRight.isNotEmpty
                                   ? Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.all(
+                                      decoration: BoxDecoration(
+                                        color: cubit.colorCardRight,
+                                        borderRadius: const BorderRadius.all(
                                           Radius.circular(20),
                                         ),
                                       ),

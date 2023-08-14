@@ -25,6 +25,29 @@ class HandShowCardModal extends StatefulWidget {
 
 class _HandShowCardModalState extends State<HandShowCardModal> {
   GameCubit cubit = Modular.get<GameCubit>();
+  Color? colorCard;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.player == 1) {
+      colorCard = Colors.blue;
+      return;
+    }
+    if (widget.player == 2) {
+      colorCard = Colors.green;
+      return;
+    }
+    if (widget.player == 3) {
+      colorCard = Colors.red;
+      return;
+    }
+    if (widget.player == 4) {
+      colorCard = Colors.pink;
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -32,9 +55,9 @@ class _HandShowCardModalState extends State<HandShowCardModal> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.all(
+            decoration: BoxDecoration(
+              color: colorCard,
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
             ),
