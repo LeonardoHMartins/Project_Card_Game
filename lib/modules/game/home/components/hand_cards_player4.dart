@@ -43,12 +43,12 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                               player: 4,
                               card: cubit.cardsPlayer4[0],
                             ).show(context);
-                            cubit.resp == true
+                            cubit.resp4 == true
                                 ? Timer(const Duration(seconds: 2), () {
                                     CenterDisputeCardsModal(
                                       card: cubit.deckCenter[0],
                                     ).show(context);
-                                    cubit.resp = null;
+                                    cubit.resp4 = null;
                                   })
                                 : null;
                           }
@@ -75,12 +75,12 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                               player: 4,
                               card: cubit.cardsPlayer4[1],
                             ).show(context);
-                            cubit.resp == true
+                            cubit.resp4 == true
                                 ? Timer(const Duration(seconds: 2), () {
                                     CenterDisputeCardsModal(
                                       card: cubit.deckCenter[0],
                                     ).show(context);
-                                    cubit.resp = null;
+                                    cubit.resp4 = null;
                                   })
                                 : null;
                           }
@@ -108,12 +108,12 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                               player: 4,
                               card: cubit.cardsPlayer4[2],
                             ).show(context);
-                            cubit.resp == true
+                            cubit.resp4 == true
                                 ? Timer(const Duration(seconds: 2), () {
                                     CenterDisputeCardsModal(
                                       card: cubit.deckCenter[0],
                                     ).show(context);
-                                    cubit.resp = null;
+                                    cubit.resp4 = null;
                                   })
                                 : null;
                           }
@@ -141,12 +141,12 @@ class _HandCardsPlayer4State extends State<HandCardsPlayer4> {
                               player: 4,
                               card: cubit.cardsPlayer4[3],
                             ).show(context);
-                            cubit.resp == true
+                            cubit.resp4 == true
                                 ? Timer(const Duration(seconds: 2), () {
                                     CenterDisputeCardsModal(
                                       card: cubit.deckCenter[0],
                                     ).show(context);
-                                    cubit.resp = null;
+                                    cubit.resp4 = null;
                                   })
                                 : null;
                           }

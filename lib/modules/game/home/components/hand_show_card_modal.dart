@@ -83,7 +83,6 @@ class _HandShowCardModalState extends State<HandShowCardModal> {
                 onPressed: () async {
                   cubit.adcionarCardDeckCenter(widget.card);
                   cubit.jogarCard(widget.card.id, widget.player);
-                  cubit.resp = true;
                   Navigator.pop(context);
                 },
                 child: const Text('Jogar'),
@@ -91,7 +90,6 @@ class _HandShowCardModalState extends State<HandShowCardModal> {
               const Gap(10),
               Button(
                   onPressed: () async {
-                    cubit.resp = false;
                     Navigator.pop(context);
                   },
                   child: const Text('Cancelar'))

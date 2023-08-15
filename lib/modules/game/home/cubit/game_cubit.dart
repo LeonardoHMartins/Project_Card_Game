@@ -41,6 +41,7 @@ class GameCubit extends Cubit<GameState> {
   Color? colorCardRight;
   Color? colorCardLeft;
 
+
   //Cartas jogadas do lado esquerdo
   List<CardModel> deckCenterLeft = [
     CardModel(id: 66, name: 'elefant'),
@@ -55,7 +56,11 @@ class GameCubit extends Cubit<GameState> {
   //0 = esquerda 1 = direita
   int direction = 0;
 
-  bool? resp;
+  bool? resp1;
+  bool? resp2;
+  bool? resp3;
+  bool? resp4;
+
   //Resultado da votação
   List<int> votation = [];
 
@@ -66,21 +71,31 @@ class GameCubit extends Cubit<GameState> {
 
   //--------------------------------Controlador do game----------------------------
 
+  void gameMaster() {}
+
   //Mudar o jogador do turno
   void changePlayer() {
     if (player == 1) {
+      resp1 = null;
+      resp2 = true;
       player = 2;
       return;
     }
     if (player == 2) {
+      resp2 = null;
+      resp3 = true;
       player = 3;
       return;
     }
     if (player == 3) {
+      resp3 = null;
+      resp4 = true;
       player = 4;
       return;
     }
     if (player == 4) {
+      resp4 = null;
+      resp1 = true;
       player = 1;
       return;
     }
