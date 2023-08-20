@@ -3,7 +3,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:project_card_game/core/common/constants/app_routes.dart';
 import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
-import 'package:project_card_game/modules/game/home/presenter/game_page.dart';
+import 'package:project_card_game/modules/game/home/players_page/player_1.dart';
+import 'package:project_card_game/modules/game/home/players_page/player_2.dart';
+import 'package:project_card_game/modules/game/home/players_page/player_3.dart';
+import 'package:project_card_game/modules/game/home/players_page/player_4.dart';
 import 'package:project_card_game/modules/home/home/presenter/home_page.dart';
 
 class AppModule extends Module {
@@ -35,9 +38,36 @@ class AppModule extends Module {
           duration: 400.ms,
         ),
         ChildRoute(
-          AppRoutes.game,
+          AppRoutes.player1,
           child: (context, args) => WillPopScope(
-            child: const GamePage(),
+            child: const Player1(),
+            onWillPop: () async => false,
+          ),
+          transition: TransitionType.fadeIn,
+          duration: 400.ms,
+        ),
+        ChildRoute(
+          AppRoutes.player2,
+          child: (context, args) => WillPopScope(
+            child: const Player2(),
+            onWillPop: () async => false,
+          ),
+          transition: TransitionType.fadeIn,
+          duration: 400.ms,
+        ),
+        ChildRoute(
+          AppRoutes.player3,
+          child: (context, args) => WillPopScope(
+            child: const Player3(),
+            onWillPop: () async => false,
+          ),
+          transition: TransitionType.fadeIn,
+          duration: 400.ms,
+        ),
+        ChildRoute(
+          AppRoutes.player4,
+          child: (context, args) => WillPopScope(
+            child: const Player4(),
             onWillPop: () async => false,
           ),
           transition: TransitionType.fadeIn,

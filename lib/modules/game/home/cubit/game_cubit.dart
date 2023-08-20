@@ -8,6 +8,11 @@ part 'game_state.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit() : super(GameInitial());
 
+  Color player1Color = Colors.blue;
+  Color player2Color = Colors.green;
+  Color player3Color = Colors.red;
+  Color player4Color = Colors.pink;
+
   //Cartas que estao na minha mão, ira ser trocado por outras aleatorias.
   List<CardModel> cardsPlayer1 = [
     CardModel(id: 1, name: 'monkey'),
@@ -41,7 +46,6 @@ class GameCubit extends Cubit<GameState> {
   Color? colorCardRight;
   Color? colorCardLeft;
 
-
   //Cartas jogadas do lado esquerdo
   List<CardModel> deckCenterLeft = [
     CardModel(id: 66, name: 'elefant'),
@@ -52,6 +56,9 @@ class GameCubit extends Cubit<GameState> {
 
   //Cartas que estao no centro da mesa
   List<CardModel> deckCenter = [];
+
+  //Qual player está jogando no momento
+  int? playerJogando;
 
   //0 = esquerda 1 = direita
   int direction = 0;

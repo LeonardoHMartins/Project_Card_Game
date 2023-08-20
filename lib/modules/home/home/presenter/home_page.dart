@@ -20,9 +20,27 @@ class _HomePageState extends State<HomePage> {
           children: [
             Button(
               onPressed: () async {
-                Modular.to.navigate(AppRoutes.game);
+                Modular.to.navigate(AppRoutes.player1);
               },
-              child: const Text('Jogar'),
+              child: const Text('Player 1'),
+            ),
+            Button(
+              onPressed: () async {
+                Modular.to.navigate(AppRoutes.player2);
+              },
+              child: const Text('Player 2'),
+            ),
+            Button(
+              onPressed: () async {
+                Modular.to.navigate(AppRoutes.player3);
+              },
+              child: const Text('Player 3'),
+            ),
+            Button(
+              onPressed: () async {
+                Modular.to.navigate(AppRoutes.player4);
+              },
+              child: const Text('Player 4'),
             ),
           ],
         ),

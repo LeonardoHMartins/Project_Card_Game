@@ -1,29 +1,50 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gap/gap.dart';
-import 'package:project_card_game/modules/game/home/components/center_dispute_cards_modal.dart';
-import 'package:project_card_game/modules/game/home/components/hand_show_card_modal.dart';
+import 'package:project_card_game/core/shared/cards/data/models/card_model.dart';
 import 'package:project_card_game/modules/game/home/cubit/game_cubit.dart';
 
 class HandCardsPlayer3 extends StatefulWidget {
-  const HandCardsPlayer3({super.key});
+  const HandCardsPlayer3({super.key, required this.playerJogando});
+  final int playerJogando;
 
   @override
   State<HandCardsPlayer3> createState() => _HandCardsPlayer3State();
 }
 
 class _HandCardsPlayer3State extends State<HandCardsPlayer3> {
+  GameCubit cubit = Modular.get<GameCubit>();
+  Color? colorCard;
+  List<CardModel>? cards = [];
+
   @override
   void initState() {
     super.initState();
+    if (widget.playerJogando == 1) {
+      colorCard = Colors.blue;
+      cards = cubit.cardsPlayer1;
+      return;
+    }
+    if (widget.playerJogando == 2) {
+      colorCard = Colors.green;
+      cards = cubit.cardsPlayer2;
+      return;
+    }
+    if (widget.playerJogando == 3) {
+      colorCard = Colors.red;
+      cards = cubit.cardsPlayer3;
+      return;
+    }
+    if (widget.playerJogando == 4) {
+      colorCard = Colors.pink;
+      cards = cubit.cardsPlayer4;
+      return;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    GameCubit cubit = Modular.get<GameCubit>();
     return BlocBuilder<GameCubit, GameState>(
       bloc: cubit,
       builder: (context, state) {
@@ -31,137 +52,62 @@ class _HandCardsPlayer3State extends State<HandCardsPlayer3> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                cubit.cardsPlayer3.isEmpty
+                cards!.isEmpty
                     ? Container()
-                    : GestureDetector(
-                        onTap: () async {
-                          if (cubit.player == 3) {
-                            await HandShowCardModal(
-                              player: 3,
-                              card: cubit.cardsPlayer3[0],
-                            ).show(context);
-                            cubit.resp3 == true
-                                ? Timer(const Duration(seconds: 2), () {
-                                    CenterDisputeCardsModal(
-                                      card: cubit.deckCenter[0],
-                                    ).show(context);
-                                    cubit.resp3 = null;
-                                  })
-                                : null;
-                          }
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
+                    : Container(
+                        decoration: BoxDecoration(
+                          color: colorCard,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                          width: 100,
-                          height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer3[0].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
+                        width: 100,
+                        height: 65,
                       ),
                 const Gap(10),
-                cubit.cardsPlayer3.length > 1
-                    ? GestureDetector(
-                        onTap: () async {
-                          if (cubit.player == 3) {
-                            await HandShowCardModal(
-                              player: 3,
-                              card: cubit.cardsPlayer3[1],
-                            ).show(context);
-                            cubit.resp3 == true
-                                ? Timer(const Duration(seconds: 2), () {
-                                    CenterDisputeCardsModal(
-                                      card: cubit.deckCenter[0],
-                                    ).show(context);
-                                    cubit.resp3 = null;
-                                  })
-                                : null;
-                          }
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
+                cards!.length > 1
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: colorCard,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                          width: 100,
-                          height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer3[1].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
+                        width: 100,
+                        height: 65,
                       )
                     : Container(),
                 const Gap(10),
-                cubit.cardsPlayer3.length > 2
-                    ? GestureDetector(
-                        onTap: () async {
-                          if (cubit.player == 3) {
-                            await HandShowCardModal(
-                              player: 3,
-                              card: cubit.cardsPlayer3[2],
-                            ).show(context);
-                            cubit.resp3 == true
-                                ? Timer(const Duration(seconds: 2), () {
-                                    CenterDisputeCardsModal(
-                                      card: cubit.deckCenter[0],
-                                    ).show(context);
-                                    cubit.resp3 = null;
-                                  })
-                                : null;
-                          }
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
+                cards!.length > 2
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: colorCard,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                          width: 100,
-                          height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer3[2].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
+                        width: 100,
+                        height: 65,
                       )
                     : Container(),
                 const Gap(10),
-                cubit.cardsPlayer3.length > 3
-                    ? GestureDetector(
-                        onTap: () async {
-                          if (cubit.player == 3) {
-                            await HandShowCardModal(
-                              player: 3,
-                              card: cubit.cardsPlayer3[3],
-                            ).show(context);
-                            cubit.resp3 == true
-                                ? Timer(const Duration(seconds: 2), () {
-                                    CenterDisputeCardsModal(
-                                      card: cubit.deckCenter[0],
-                                    ).show(context);
-                                    cubit.resp3 = null;
-                                  })
-                                : null;
-                          }
-                        },
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
+                cards!.length > 3
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: colorCard,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                          width: 100,
-                          height: 200,
-                          child: Center(child: Text(cubit.cardsPlayer3[3].name, style: const TextStyle(fontWeight: FontWeight.bold))),
                         ),
+                        width: 100,
+                        height: 65,
                       )
                     : Container(),
               ],

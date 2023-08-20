@@ -8,6 +8,10 @@ class AppRoutes {
 
   static String get home => '/';
   static String get game => '/game/';
+  static String get player1 => '/player1/';
+  static String get player2 => '/player2/';
+  static String get player3 => '/player3/';
+  static String get player4 => '/player4/';
   static String get profile => '/home/profile/';
 
   static String get observarList => '/home/observar/';
